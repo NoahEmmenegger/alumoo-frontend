@@ -1,22 +1,33 @@
-import React from 'react';
-import { SafeAreaView, Text, View, Button } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, Button } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import tw from '../utils/tailwind';
 
-import tw from 'tailwind-react-native-classnames'
-
-export default function HomeScreen( {navigation} ) {
-    console.log('test');
+export default function HomeScreen({ navigation }) {
+    const [isMyList, setIsMyList] = useState(false);
     return (
-        <View>
-            <SafeAreaView>
-                <Text style={[tw`bg-red-600`]}>Home</Text>
-            </SafeAreaView>
+        <View style={tw`bg-white rounded-xl`}>
+            <SafeAreaView style={tw`flex flex-row justify-center`}>
+                <Text
+                    style={tw`${!isMyList ? 'underline text-primary' : ''} m-2 mb-0 text-lg`}
+                    onPress={() => setIsMyList(false)}
+                >
+                    Suggestion
+                </Text>
+                <Text
+                    style={tw`${isMyList ? 'underline text-primary' : ''} m-2 mb-0 text-lg`}
+                    onPress={() => setIsMyList(true)}
+                >
+                    My list
+                </Text>
 
-            <Button
-                title="CreateProject"
-                onPress={() =>
-                    navigation.navigate('CreateProject')
-                }
-            />
+                <Button
+                    title="CreateProject"
+                    onPress={() =>
+                        navigation.navigate('CreateProject')
+                    }
+                />
+            </SafeAreaView>
         </View>
     );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, Text, TextInput, TouchableOpacity, ScrollView, View  } from 'react-native';
 
-import tw from 'tailwind-react-native-classnames'
+import tw from '../utils/tailwind';
 
 export default function CreateTask({ navigation }) {
     const [projecTitle, onChangeTitle] = React.useState();

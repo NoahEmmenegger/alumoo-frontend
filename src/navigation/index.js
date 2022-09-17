@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import CreateTask from '../screens/CreateTask';
 import CreateProject from '../screens/CreateProject';
@@ -16,7 +17,7 @@ const BottomTab = createBottomTabNavigator();
 export default function Navigation() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Tabs">
+            <Stack.Navigator initialRouteName="Tabs" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Tabs" component={Tabs} />
                 <Stack.Screen name="CreateProject" component={CreateProject} />
                 <Stack.Screen name="CreateTask" component={CreateTask} />
@@ -27,10 +28,37 @@ export default function Navigation() {
 
 function Tabs() {
     return (
-        <BottomTab.Navigator initialRouteName="Home">
-            <BottomTab.Screen name="Home" component={HomeScreen} />
-            <BottomTab.Screen name="Search" component={Search} />
-            <BottomTab.Screen name="Profile" component={Profile} />
+        <BottomTab.Navigator
+            initialRouteName="Home"
+            screenOptions={{ tabBarActiveTintColor: '#FFD125', tabBarInactiveTintColor: '#EFEFEF', headerShown: false }}
+        >
+            <BottomTab.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <FontAwesome size={30} style={{ marginBottom: -3 }} name="list" color={color} />
+                    ),
+                }}
+            />
+            <BottomTab.Screen
+                name="Search"
+                component={Search}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <FontAwesome size={30} style={{ marginBottom: -3 }} name="search" color={color} />
+                    ),
+                }}
+            />
+            <BottomTab.Screen
+                name="Profile"
+                component={Profile}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <FontAwesome size={30} style={{ marginBottom: -3 }} name="user" color={color} />
+                    ),
+                }}
+            />
         </BottomTab.Navigator>
     );
 }
