@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+import { toggleStarTask } from '../utils/api/taksApi';
 import tw from '../utils/tailwind';
 import Star from './common/Star';
 
@@ -11,7 +12,7 @@ export default function TaskPreviewCard({ navigation, task }) {
         >
             <View style={tw`flex flex-row`}>
                 <Text style={tw`mr-auto`}>{task.title}</Text>
-                <Star />
+                <Star onPressStart={() => toggleStarTask(task.taskId, 293)} />
             </View>
             <View style={tw`flex flex-row w-full justify-between mt-3`}>
                 <Text style={tw`text-gray-400`}>Rotkreuz</Text>

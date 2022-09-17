@@ -1,15 +1,18 @@
 import { FontAwesome } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { toggleStarTask } from '../../utils/api/taksApi';
 
-export default function Star() {
+export default function Star({ onPressStart }) {
     const [isFilled, setIsFilled] = useState(false);
     return (
         <TouchableOpacity
             onPress={() => {
-                toggleStarTask();
-                setIsFilled(!isFilled);
+                if (isFilled) {
+                    setIsFilled(false);
+                } else {
+                    setIsFilled(true);
+                }
+                onPressStart();
             }}
         >
             <FontAwesome name={isFilled ? 'star' : 'star-o'} size={30} color="#FFD125" />

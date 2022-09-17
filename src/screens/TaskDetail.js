@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView, Text, TouchableHighlight, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Star from '../components/common/Star';
-import { getTask } from '../utils/api/taksApi';
+import { getTask, toggleStarTask } from '../utils/api/taksApi';
 import tw from '../utils/tailwind';
 
 export default function TaskDetail({ navigation, route }) {
@@ -39,7 +39,7 @@ export default function TaskDetail({ navigation, route }) {
             <View style={tw`flex flex-row`}>
                 <Text style={tw`text-2xl w-4/5`}>{task.title}</Text>
                 <View style={tw`ml-auto`}>
-                    <Star />
+                    <Star onPressStart={() => toggleStarTask(task.id, 293)} />
                 </View>
             </View>
             <View style={tw`flex flex-row mb-10`}>

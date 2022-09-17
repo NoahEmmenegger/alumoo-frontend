@@ -6,7 +6,9 @@ export async function getSuggestions() {
     return (await axios.get(`${baseUri}Suggestion/getSuggestedTasks?loadedTasks=0&volunteerId=293`)).data;
 }
 
-export function toggleStarTask() {}
+export async function toggleStarTask(taskId, volunteerId) {
+    return (await axios.post(`${baseUri}Task/toggleStarTask`, { taskId, volunteerId })).data;
+}
 
 export async function getMyTasks() {
     return (await axios.get(`${baseUri}Task/getFavoritTasks?volunteerId=293`)).data;
