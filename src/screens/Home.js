@@ -2,7 +2,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import React, { Fragment, useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import TaskPreviewCard from '../components/TaskPreviewCard';
+import TaskPreviewCard from '../components/TaskPreviewCard'
 import { getMyTasks, getSuggestions } from '../utils/api/taksApi';
 import tw from '../utils/tailwind';
 
