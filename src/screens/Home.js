@@ -1,6 +1,6 @@
 import { EvilIcons } from '@expo/vector-icons';
 import React, { Fragment, useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TaskPreviewCard from '../components/TaskPreviewCard';
 import { getMyTasks, getSuggestions } from '../utils/api/taksApi';
@@ -50,11 +50,11 @@ export default function HomeScreen({ navigation }) {
                 </SafeAreaView>
             </View>
 
-            <View style={tw`flex`}>
+            <ScrollView style={tw`flex`}>
                 {tasks.map((task) => (
                     <TaskPreviewCard key={task.id} task={task} navigation={navigation} />
                 ))}
-            </View>
+            </ScrollView>
         </Fragment>
     );
 }

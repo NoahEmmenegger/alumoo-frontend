@@ -14,6 +14,36 @@ export function getSuggestions() {
                     isRemote: false,
                     location: 'Rotkreuz',
                 },
+                {
+                    id: 3,
+                    title: 'Old woman wants to cross the road!',
+                    isRemote: false,
+                    location: 'Rotkreuz',
+                },
+                {
+                    id: 4,
+                    title: 'Old woman wants to cross the road!',
+                    isRemote: false,
+                    location: 'Rotkreuz',
+                },
+                {
+                    id: 5,
+                    title: 'Old woman wants to cross the road!',
+                    isRemote: false,
+                    location: 'Rotkreuz',
+                },
+                {
+                    id: 6,
+                    title: 'Old woman wants to cross the road!',
+                    isRemote: false,
+                    location: 'Rotkreuz',
+                },
+                {
+                    id: 7,
+                    title: 'Old woman wants to cross the road!',
+                    isRemote: false,
+                    location: 'Rotkreuz',
+                },
             ]);
         }, 1000);
     });
