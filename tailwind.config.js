@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ['./src/**/*.{html,js}'],
+    content: ['*'],
     theme: {
         extend: {
             colors: {
@@ -16,12 +16,6 @@ module.exports = {
             animation: {
                 fade: 'fadeOut 5s ease-in-out',
             },
-            keyframes: (theme) => ({
-                fadeOut: {
-                    '0%': { opacity: '100% ' },
-                    '100%': { opacity: '0%' },
-                },
-            }),
         },
     },
     plugins: [],
