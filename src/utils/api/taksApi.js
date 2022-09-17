@@ -59,6 +59,9 @@ export function getMyprojects() {
                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus lacus in nisi pellentesque, eu aliquet nibh condimentum. Nullam efficitur.',
                 }
             ]);
+        }, 1000)
+    })
+}
 export function getTask(id) {
     return new Promise((res, rej) => {
         setTimeout(() => {

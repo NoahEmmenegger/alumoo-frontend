@@ -6,13 +6,11 @@ import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import ProjectOverview from '../screens/ProjectOverview';
 import SetupSkills from '../screens/SetupSkills';
-import CreateTask from '../screens/CreateTask';
 import CreateProject from '../screens/CreateProject';
 import CreateTask from '../screens/CreateTask';
 import HomeScreen from '../screens/Home';
 import Profile from '../screens/Profile';
 import Search from '../screens/Search';
-import SetupSkills from '../screens/SetupSkills';
 import TaskDetail from '../screens/TaskDetail';
 
 const Stack = createNativeStackNavigator();
