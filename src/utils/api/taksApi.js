@@ -19,6 +19,8 @@ export function getSuggestions() {
     });
 }
 
+export function toggleStarTask() {}
+
 export function getMyTasks() {
     return new Promise((res, rej) => {
         setTimeout(() => {
