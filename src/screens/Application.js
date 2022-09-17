@@ -12,7 +12,8 @@ export default function Application() {
             setApplications(await getApplicationsFromProjectId());
         }
         init();
-    });
+    }, []);
+
     return (
         <SafeAreaView>
             <ScrollView style={[tw`h-full`]}>

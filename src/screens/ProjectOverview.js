@@ -15,7 +15,7 @@ export default function ProjectOverview({ route, navigation }) {
             setTasks((await getProjectById(project.projectId)).tasks);
         }
         init();
-    });
+    }, []);
 
     return (
         <SafeAreaView>
