@@ -2,9 +2,11 @@ import React from 'react';
 import { SafeAreaView, Text, TextInput, TouchableOpacity, ScrollView, View } from 'react-native';
 import tw from '../utils/tailwind';
 import Emitter from '../utils/emitter';
+import { createProjectCall } from '../utils/api/taksApi';
 
 export default function CreateProject( { navigation } ) {
     const [project, setProject] = React.useState({
+        userId: 1,
         title: '',
         description: '',
         tasks: []
@@ -15,9 +17,19 @@ export default function CreateProject( { navigation } ) {
     }
 
     const handleCreateProject = () => {
-        sliders = project.tasks[0].sliders
-        console.log(convertToString(sliders))
+        const projectObject = {
+            title: project.title,
+            description: project.description,
+            userId: project.userId
+
+        }
+        createProjectCall(projectObject)
     }
+
+    const handleCreateTasks = () => {
+        
+    }
+
 
     const convertToString = (sliders) => {
         let sliderString  = '';
@@ -79,10 +91,10 @@ export default function CreateProject( { navigation } ) {
                 </TouchableOpacity>
 
                 <View style={[tw`flex-row justify-around bottom-0`]}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={[tw`mt-12 h-16 w-40 justify-center self-center border-2 bg-red-600 border-red-600 rounded-full`]}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} style={[tw`mt-12 h-16 w-40 justify-center self-center border-2 bg-gray-400 border-gray-400 rounded-full`]}>
                         <Text style={[tw`text-lg text-center text-white`]}>Back</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => handleCreateProject()} style={[tw`mt-12 h-16 w-40 justify-center self-center border-2 bg-blue-600 border-blue-600 rounded-full`]}>
+                    <TouchableOpacity onPress={handleCreateProject} style={[tw`mt-12 h-16 w-40 justify-center self-center border-2 bg-primary border-primary rounded-full`]}>
                         <Text style={[tw`text-lg text-center text-white`]}>Create</Text>
                     </TouchableOpacity>
                 </View>

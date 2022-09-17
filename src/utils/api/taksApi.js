@@ -39,3 +39,35 @@ export function getMyTasks() {
         }, 1000);
     });
 }
+
+export async function createProjectCall(project) {
+    res = await fetch('https://api-server.loca.lt/api/Project/createProject', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(project)
+    })
+    .then((data) => {
+        console.log(JSON.stringify(data));
+    })
+    .catch(error => {
+        console.log(error);
+    })
+}
+
+export async function setupSkillsCall(skillsUpdate) {
+    res = await fetch('https://api-server.loca.lt/api/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(skillsUpdate)
+    })
+    .then((data) => {
+        console.log(JSON.stringify(data));
+    })
+    .catch(error => {
+        console.log(error);
+    })
+}

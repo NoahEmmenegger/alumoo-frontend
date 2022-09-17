@@ -22,7 +22,7 @@ export default function CreateTask({ route, navigation }) {
 
     const sliderMax = 1;
     const sliderMin = 0;
-    const sliderColor = '#2590EB'
+    const sliderColor = '#FFD125'
 
     const handleOnTaskCreated = (Task) => {
         Emitter.emit("TaskCreated", Task);
@@ -117,10 +117,10 @@ export default function CreateTask({ route, navigation }) {
                 </View>
 
                 <View style={[tw`flex-row justify-around bottom-0`]}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={[tw`mt-12 h-16 w-40 justify-center self-center border-2 bg-red-600 border-red-600 rounded-full`]}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} style={[tw`mt-12 h-16 w-40 justify-center self-center border-2 bg-gray-400 border-gray-400 rounded-full`]}>
                         <Text style={[tw`text-lg text-center text-white`]}>Back</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => handleOnTaskCreated(task)} style={[tw`mt-12 h-16 w-40 justify-center self-center border-2 bg-blue-600 border-blue-600 rounded-full`]}>
+                    <TouchableOpacity onPress={() => handleOnTaskCreated(task)} style={[tw`mt-12 h-16 w-40 justify-center self-center border-2 bg-primary border-primary rounded-full`]}>
                         <Text style={[tw`text-lg text-center text-white`]}>Create</Text>
                     </TouchableOpacity>
                 </View>

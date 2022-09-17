@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
+import SetupSkills from '../screens/SetupSkills';
 import CreateTask from '../screens/CreateTask';
 import CreateProject from '../screens/CreateProject';
 import HomeScreen from '../screens/Home';
@@ -21,6 +22,7 @@ export default function Navigation() {
                 <Stack.Screen name="Tabs" component={Tabs} />
                 <Stack.Screen name="CreateProject" component={CreateProject} />
                 <Stack.Screen name="CreateTask" component={CreateTask} />
+                <Stack.Screen name="SetupSkills" component={SetupSkills} />
             </Stack.Navigator>
         </NavigationContainer>
     );
