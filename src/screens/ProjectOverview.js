@@ -26,7 +26,7 @@ export default function ProjectOverview({ route, navigation }) {
 
             <View>
                 {tasks.map((task) => {
-                    return <TaskPreviewCard key={task.id} task={task} />;
+                    return <TaskPreviewCard key={task.id} task={task} navigation={navigation} />;
                 })}
             </View>
         </SafeAreaView>

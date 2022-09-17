@@ -4,13 +4,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
-import ProjectOverview from '../screens/ProjectOverview';
-import SetupSkills from '../screens/SetupSkills';
+import Application from '../screens/Application';
 import CreateProject from '../screens/CreateProject';
 import CreateTask from '../screens/CreateTask';
 import HomeScreen from '../screens/Home';
 import Profile from '../screens/Profile';
+import ProjectOverview from '../screens/ProjectOverview';
 import Search from '../screens/Search';
+import SetupSkills from '../screens/SetupSkills';
 import TaskDetail from '../screens/TaskDetail';
 
 const Stack = createNativeStackNavigator();
@@ -23,6 +24,7 @@ export default function Navigation() {
             <Stack.Navigator initialRouteName="Tabs" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Tabs" component={Tabs} />
                 <Stack.Screen name="CreateProject" component={CreateProject} />
+                <Stack.Screen name="Application" component={Application} />
                 <Stack.Screen name="TaskDetail" component={TaskDetail} />
                 <Stack.Screen name="CreateTask" component={CreateTask} />
                 <Stack.Screen name="SetupSkills" component={SetupSkills} />

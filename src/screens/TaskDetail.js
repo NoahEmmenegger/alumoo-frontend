@@ -14,6 +14,8 @@ export default function TaskDetail({ navigation, route }) {
         );
     }
 
+    const userId = 2;
+
     const [task, setTask] = useState(null);
 
     useState(() => {
@@ -52,19 +54,31 @@ export default function TaskDetail({ navigation, route }) {
                 ))}
             </ScrollView>
 
-            <View style={tw`flex flex-row justify-center mt-auto`}>
-                <TouchableHighlight
-                    onPress={() => navigation.goBack()}
-                    style={tw`bg-secondary rounded-lg p-4 text-white m-10 w-1/3`}
-                    title="Apply"
-                >
-                    <Text style={tw`text-white m-auto`}>Cancel</Text>
-                </TouchableHighlight>
+            {userId === 2 ? (
+                <View style={tw`flex flex-row justify-center mt-auto`}>
+                    <TouchableHighlight
+                        onPress={() => navigation.navigate('Application', { projectId: route.params.id })}
+                        style={tw`bg-primary rounded-lg p-4 text-white m-10`}
+                        title="Apply"
+                    >
+                        <Text style={tw`text-white m-auto`}>view applications</Text>
+                    </TouchableHighlight>
+                </View>
+            ) : (
+                <View style={tw`flex flex-row justify-center mt-auto`}>
+                    <TouchableHighlight
+                        onPress={() => navigation.goBack()}
+                        style={tw`bg-secondary rounded-lg p-4 text-white m-10 w-1/3`}
+                        title="Apply"
+                    >
+                        <Text style={tw`text-white m-auto`}>Cancel</Text>
+                    </TouchableHighlight>
 
-                <TouchableHighlight style={tw`bg-primary rounded-lg p-4 text-white m-10 w-1/3`} title="Apply">
-                    <Text style={tw`text-white m-auto`}>Apply</Text>
-                </TouchableHighlight>
-            </View>
+                    <TouchableHighlight style={tw`bg-primary rounded-lg p-4 text-white m-10 w-1/3`} title="Apply">
+                        <Text style={tw`text-white m-auto`}>Apply</Text>
+                    </TouchableHighlight>
+                </View>
+            )}
         </SafeAreaView>
     );
 }
