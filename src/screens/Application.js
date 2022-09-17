@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { getApplicationsFromProjectId } from '../utils/api/taksApi';
 import tw from '../utils/tailwind';
 
 export default function Application() {
-    const [applications, setApplications] = useState([
-        { firstname: 'vORNAME', lastname: 'Nachname', id: 1 },
-        { firstname: 'vORNAME', lastname: 'Nachname', id: 2 },
-    ]);
+    const [applications, setApplications] = useState([]);
+
+    useEffect(() => {
+        async function init() {
+            setApplications(await getApplicationsFromProjectId());
+        }
+        init();
+    });
     return (
         <SafeAreaView>
             <ScrollView style={[tw`h-full`]}>
