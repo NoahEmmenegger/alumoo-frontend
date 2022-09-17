@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const baseUri = 'https://alumoo-backend-api.azurewebsites.net/api/';
+
 export function getSuggestions() {
     return new Promise((res, rej) => {
         setTimeout(() => {
@@ -81,16 +83,18 @@ export function getMyprojects() {
                 {
                     projectId: 1,
                     title: 'PC Build',
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus lacus in nisi pellentesque, eu aliquet nibh condimentum. Nullam efficitur.',
+                    description:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus lacus in nisi pellentesque, eu aliquet nibh condimentum. Nullam efficitur.',
                 },
                 {
                     projectId: 2,
                     title: 'Doctors beyond borders',
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus lacus in nisi pellentesque, eu aliquet nibh condimentum. Nullam efficitur.',
-                }
+                    description:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus lacus in nisi pellentesque, eu aliquet nibh condimentum. Nullam efficitur.',
+                },
             ]);
-        }, 1000)
-    })
+        }, 1000);
+    });
 }
 export function getTask(id) {
     return new Promise((res, rej) => {
@@ -114,20 +118,21 @@ export async function createProjectCall(project) {
     projectDatapoint = {
         title: project.title,
         description: project.description,
-        userId: project.userId
-    }
-    const res = await axios.post(`https://alumoo-backend-api.azurewebsites.net/api/Project/createProject`, projectDatapoint);
-    
-    console.log(res.data)
+        userId: project.userId,
+    };
+    const res = await axios.post(
+        `https://alumoo-backend-api.azurewebsites.net/api/Project/createProject`,
+        projectDatapoint
+    );
+
     createTasks(project.tasks, res.data);
 }
 
 export async function createTasks(tasks, projectId) {
-    console.log(tasks)
-    const res = axios.post(`https://alumoo-backend-api.azurewebsites.net/api/Task/createTasksForProject?projectId=${projectId}`, tasks);
-    console.log(res.data)
-    console.log(res.status);
-    
+    const res = axios.post(
+        `https://alumoo-backend-api.azurewebsites.net/api/Task/createTasksForProject?projectId=${projectId}`,
+        tasks
+    );
 }
 
 export async function setupSkillsCall(skillsUpdate) {
@@ -144,4 +149,24 @@ export async function setupSkillsCall(skillsUpdate) {
         .catch((error) => {
             console.log(error);
         });
+}
+
+export async function getProjectById(id) {
+    //axios.get(baseUri + '');
+    return new Promise((res, rej) => {
+        setTimeout(() => {
+            res({
+                id: 1,
+                title: 'My task',
+                description: 'lorem ipsum',
+                tasks: [
+                    {
+                        id: 2,
+                        title: 'Task',
+                        description: 'lorem lorem',
+                    },
+                ],
+            });
+        }, 1000);
+    });
 }
