@@ -8,9 +8,12 @@ import ProjectOverview from '../screens/ProjectOverview';
 import SetupSkills from '../screens/SetupSkills';
 import CreateTask from '../screens/CreateTask';
 import CreateProject from '../screens/CreateProject';
+import CreateTask from '../screens/CreateTask';
 import HomeScreen from '../screens/Home';
 import Profile from '../screens/Profile';
 import Search from '../screens/Search';
+import SetupSkills from '../screens/SetupSkills';
+import TaskDetail from '../screens/TaskDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +25,7 @@ export default function Navigation() {
             <Stack.Navigator initialRouteName="Tabs" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Tabs" component={Tabs} />
                 <Stack.Screen name="CreateProject" component={CreateProject} />
+                <Stack.Screen name="TaskDetail" component={TaskDetail} />
                 <Stack.Screen name="CreateTask" component={CreateTask} />
                 <Stack.Screen name="SetupSkills" component={SetupSkills} />
                 <Stack.Screen name="ProjectOverview" component={ProjectOverview} />

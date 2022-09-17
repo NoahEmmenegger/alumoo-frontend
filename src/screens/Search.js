@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { SafeAreaView, Text } from 'react-native';
 
 export default function Search() {
     return (
-        <View>
-            <Text>Search</Text>
-        </View>
+        <SafeAreaView>
+            <Text>The search is currently unavailable</Text>
+        </SafeAreaView>
     );
 }

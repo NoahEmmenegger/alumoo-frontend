@@ -5,6 +5,7 @@ module.exports = {
         extend: {
             colors: {
                 primary: '#FFD125',
+                secondary: '#BABABA',
             },
             boxShadow: {
                 xxl: '0 15px 50px 30px rgba(0, 0, 0, 0.3)',
