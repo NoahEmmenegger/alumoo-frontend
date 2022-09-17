@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import React from 'react';
+import CreateTask from '../screens/CreateTask';
 import CreateProject from '../screens/CreateProject';
 import HomeScreen from '../screens/Home';
 import Profile from '../screens/Profile';
@@ -18,6 +19,7 @@ export default function Navigation() {
             <Stack.Navigator initialRouteName="Tabs">
                 <Stack.Screen name="Tabs" component={Tabs} />
                 <Stack.Screen name="CreateProject" component={CreateProject} />
+                <Stack.Screen name="CreateTask" component={CreateTask} />
             </Stack.Navigator>
         </NavigationContainer>
     );
