@@ -3,30 +3,13 @@ import axios from 'axios';
 const baseUri = 'https://alumoo-backend-api.azurewebsites.net/api/';
 
 export async function getSuggestions() {
-    return (await axios.get(`${baseUri}Suggestion/getSuggestedTasks?loadedTasks=2&volunteerId=293`)).data;
+    return (await axios.get(`${baseUri}Suggestion/getSuggestedTasks?loadedTasks=0&volunteerId=293`)).data;
 }
 
 export function toggleStarTask() {}
 
-export function getMyTasks() {
-    return new Promise((res, rej) => {
-        setTimeout(() => {
-            res([
-                {
-                    id: 1,
-                    title: 'My task',
-                    isRemote: true,
-                    location: '',
-                },
-                {
-                    id: 2,
-                    title: 'Other task',
-                    isRemote: false,
-                    location: 'Rotkreuz',
-                },
-            ]);
-        }, 1000);
-    });
+export async function getMyTasks() {
+    return (await axios.get(`${baseUri}Task/getFavoritTasks?volunteerId=293`)).data;
 }
 
 export function getMyprojects() {
