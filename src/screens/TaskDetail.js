@@ -5,7 +5,7 @@ import Star from '../components/common/Star';
 import { getTask } from '../utils/api/taksApi';
 import tw from '../utils/tailwind';
 
-export default function TaskDetail({ route }) {
+export default function TaskDetail({ navigation, route }) {
     if (route.params.id <= 0) {
         return (
             <SafeAreaView>
@@ -53,7 +53,11 @@ export default function TaskDetail({ route }) {
             </ScrollView>
 
             <View style={tw`flex flex-row justify-center mt-auto`}>
-                <TouchableHighlight style={tw`bg-secondary rounded-lg p-4 text-white m-10 w-1/3`} title="Apply">
+                <TouchableHighlight
+                    onPress={() => navigation.goBack()}
+                    style={tw`bg-secondary rounded-lg p-4 text-white m-10 w-1/3`}
+                    title="Apply"
+                >
                     <Text style={tw`text-white m-auto`}>Cancel</Text>
                 </TouchableHighlight>
 

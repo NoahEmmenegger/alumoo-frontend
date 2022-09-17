@@ -1,4 +1,4 @@
-import { FontAwesome } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 import React, { Fragment, useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -41,9 +41,9 @@ export default function HomeScreen({ navigation }) {
                         </Text>
                     </View>
 
-                    <FontAwesome
+                    <EvilIcons
                         name="plus"
-                        size={30}
+                        size={35}
                         style={tw`text-primary absolute top-15 right-6`}
                         onPress={() => navigation.navigate('CreateProject')}
                     />
