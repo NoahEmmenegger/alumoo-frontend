@@ -6,7 +6,7 @@ import { createProjectCall } from '../utils/api/taksApi';
 
 export default function CreateProject( { navigation } ) {
     const [project, setProject] = React.useState({
-        userId: 1,
+        userId: 1002,
         title: '',
         description: '',
         tasks: []
@@ -17,27 +17,7 @@ export default function CreateProject( { navigation } ) {
     }
 
     const handleCreateProject = () => {
-        const projectObject = {
-            title: project.title,
-            description: project.description,
-            userId: project.userId
-
-        }
-        createProjectCall(projectObject)
-    }
-
-    const handleCreateTasks = () => {
-        
-    }
-
-
-    const convertToString = (sliders) => {
-        let sliderString  = '';
-        sliders.forEach(slider => {
-            sliderString += slider.value + ', '
-        });
-
-        return sliderString;
+        createProjectCall(project)
     }
 
     Emitter.on("TaskCreated", handleTaskCreated);
@@ -74,7 +54,7 @@ export default function CreateProject( { navigation } ) {
                     {project.tasks.map(task => {
                         return(
                         <View key={task.id} style={tw`h-16 w-80 mb-5 border-2 border-gray-300 rounded-sm`}>
-                            <Text style={tw`text-black underline`}>
+                            <Text style={tw`text-black font-semibold`}>
                                 {task.title}
                             </Text>
                             <Text style={tw`text-black`}>

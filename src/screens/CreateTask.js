@@ -11,13 +11,14 @@ export default function CreateTask({ route, navigation }) {
         id: newId,
         title: '',
         location: '',
-        hours: '',
-        volunteerAmount: '',
+        hoursPerWeek: '',
+        noOfVolunteers: '',
         description: '',
         sliders: [ {value: 0.5, desc: "A Computer needs to be fixed"}, {value: 0.5, desc: "A Sociable person is needed"}, {value: 0.5, desc: "A creative person is needed"},
             {value: 0.5, desc: "There needs to be good planning"}, {value: 0.5, desc: "There's going to be physical labor"}, {value: 0.5, desc: "Someone with good writing skills is needed"},
             {value: 0.5, desc: "Someone needs to drive"}, {value: 0.5, desc: "An entertaining person is needed"}, {value: 0.5, desc: "Someone needs to be good with children"},
-            {value: 0.5, desc: "Finance is involved"} ]
+            {value: 0.5, desc: "Finance is involved"} ],
+        skills: ''
     })
 
     const sliderMax = 1;
@@ -27,6 +28,15 @@ export default function CreateTask({ route, navigation }) {
     const handleOnTaskCreated = (Task) => {
         Emitter.emit("TaskCreated", Task);
         navigation.goBack();
+    }
+
+    const convertToString = (sliders) => {
+        let sliderString  = '';
+        sliders.forEach(slider => {
+            sliderString += slider.value + ', '
+        });
+
+        return sliderString;
     }
 
 
@@ -61,8 +71,8 @@ export default function CreateTask({ route, navigation }) {
                     </Text>
                     <TextInput
                         style={[tw`h-10 w-80 mt-1.5 pl-2 pr-2 self-center border-2 border-gray-300 rounded-3xl`]}
-                        onChangeText={(text) => setTask({...task, hours: text})}
-                        value={task.hours}
+                        onChangeText={(text) => setTask({...task, hoursPerWeek: text})}
+                        value={task.hoursPerWeek}
                     />
                 </View>
 
@@ -72,8 +82,8 @@ export default function CreateTask({ route, navigation }) {
                     </Text>
                     <TextInput
                         style={[tw`h-10 w-80 mt-1.5 pl-2 pr-2 self-center border-2 border-gray-300 rounded-3xl`]}
-                        onChangeText={(text) => setTask({...task, volunteerAmount: text})}
-                        value={task.volunteerAmount}
+                        onChangeText={(text) => setTask({...task, noOfVolunteers: text})}
+                        value={task.noOfVolunteers}
                     />
                 </View>
 
@@ -105,6 +115,7 @@ export default function CreateTask({ route, navigation }) {
                                         const newSliders = [...task.sliders]
                                         newSliders[index].value = value
                                         setTask({...task, sliders: newSliders})
+                                        setTask({...task, skills: convertToString(task.sliders)})
                                     }}
                                     maximumValue={sliderMax}
                                     minimumValue={sliderMin}
