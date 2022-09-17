@@ -106,14 +106,3 @@ export async function getProjectById(id) {
         }, 1000);
     });
 }
-
-export async function getApplicationsFromProjectId(projectId) {
-    return new Promise((res, rej) => {
-        setTimeout(() => {
-            res([
-                { firstname: 'vORNAME', lastname: 'Nachname', id: 1 },
-                { firstname: 'vORNAME', lastname: 'Nachname', id: 2 },
-            ]);
-        }, 1000);
-    });
-}

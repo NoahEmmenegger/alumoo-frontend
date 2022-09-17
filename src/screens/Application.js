@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { getApplicationsFromProjectId } from '../utils/api/taksApi';
+import { acceptApplication, denyApplication, getApplicationsFromTaskId } from '../utils/api/application';
 import tw from '../utils/tailwind';
 
-export default function Application() {
+export default function Application({ route }) {
     const [applications, setApplications] = useState([]);
 
     useEffect(() => {
         async function init() {
-            setApplications(await getApplicationsFromProjectId());
+            setApplications(await getApplicationsFromTaskId(route.params.id));
         }
         init();
     }, []);
@@ -25,7 +25,7 @@ export default function Application() {
                             </Text>
                             <View style={[tw`flex-row justify-around bottom-0`]}>
                                 <TouchableOpacity
-                                    onPress={() => navigation.goBack()}
+                                    onPress={() => denyApplication(application.id, route.params.id)}
                                     style={[
                                         tw`mt-12 h-16 w-40 justify-center self-center border-2 bg-gray-400 border-gray-400 rounded-full`,
                                     ]}
@@ -33,7 +33,7 @@ export default function Application() {
                                     <Text style={[tw`text-lg text-center text-white`]}>Decline</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity
-                                    onPress={() => handleOnTaskCreated(task)}
+                                    onPress={() => acceptApplication(application.id, route.params.id)}
                                     style={[
                                         tw`mt-12 h-16 w-40 justify-center self-center border-2 bg-primary border-primary rounded-full`,
                                     ]}

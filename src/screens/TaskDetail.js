@@ -57,7 +57,7 @@ export default function TaskDetail({ navigation, route }) {
             {userId === 2 ? (
                 <View style={tw`flex flex-row justify-center mt-auto`}>
                     <TouchableHighlight
-                        onPress={() => navigation.navigate('Application', { projectId: route.params.id })}
+                        onPress={() => navigation.navigate('Application', { id: route.params.id })}
                         style={tw`bg-primary rounded-lg p-4 text-white m-10`}
                         title="Apply"
                     >
