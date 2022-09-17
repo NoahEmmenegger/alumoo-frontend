@@ -1,26 +1,27 @@
 import { FontAwesome } from '@expo/vector-icons';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TaskPreviewCard from '../components/TaskPreviewCard';
+import { getMyTasks, getSuggestions } from '../utils/api/taksApi';
 import tw from '../utils/tailwind';
 
 export default function HomeScreen({ navigation }) {
     const [isMyList, setIsMyList] = useState(false);
-    const [tasks, setTasks] = useState([
-        {
-            id: 1,
-            title: 'Read me a bedtime story',
-            isRemote: true,
-            location: '',
-        },
-        {
-            id: 2,
-            title: 'Old woman wants to cross the road!',
-            isRemote: false,
-            location: 'Rotkreuz',
-        },
-    ]);
+    const [tasks, setTasks] = useState([]);
+
+    async function updateTasks() {
+        setTasks(isMyList ? await getMyTasks() : await getSuggestions());
+    }
+
+    useEffect(() => {
+        updateTasks();
+    });
+
+    useEffect(() => {
+        updateTasks();
+    }, [isMyList]);
+
     return (
         <Fragment>
             <View style={tw`bg-white rounded-xl`}>
