@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
+import ProjectOverview from '../screens/ProjectOverview';
 import SetupSkills from '../screens/SetupSkills';
 import CreateTask from '../screens/CreateTask';
 import CreateProject from '../screens/CreateProject';
@@ -23,6 +24,7 @@ export default function Navigation() {
                 <Stack.Screen name="CreateProject" component={CreateProject} />
                 <Stack.Screen name="CreateTask" component={CreateTask} />
                 <Stack.Screen name="SetupSkills" component={SetupSkills} />
+                <Stack.Screen name="ProjectOverview" component={ProjectOverview} />
             </Stack.Navigator>
         </NavigationContainer>
     );
