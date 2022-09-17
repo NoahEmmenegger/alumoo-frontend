@@ -1,15 +1,20 @@
-import React from 'react';
-import { SafeAreaView, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import tw from 'tailwind-react-native-classnames';
 
 export default function HomeScreen() {
-    console.log('test');
+    const [isMyList, setIsMyList] = useState(false);
     return (
-        <SafeAreaView>
-            <View>
-                <Text style={tw`underline`}>Suggestion</Text>
-                <Text style={tw`underline`}>My list</Text>
-            </View>
-        </SafeAreaView>
+        <View style={tw`bg-white rounded-xl`}>
+            <SafeAreaView style={tw`flex flex-row justify-center`}>
+                <Text style={tw`${!isMyList && 'underline'} m-2 mb-0 text-lg`} onPress={() => setIsMyList(false)}>
+                    Suggestion
+                </Text>
+                <Text style={tw`${isMyList && 'underline'} m-2 mb-0 text-lg`} onPress={() => setIsMyList(true)}>
+                    My list
+                </Text>
+            </SafeAreaView>
+        </View>
     );
 }
