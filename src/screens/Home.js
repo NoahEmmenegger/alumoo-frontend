@@ -16,7 +16,7 @@ export default function HomeScreen({ navigation }) {
 
     useEffect(() => {
         updateTasks();
-    });
+    }, []);
 
     useEffect(() => {
         updateTasks();
@@ -52,7 +52,7 @@ export default function HomeScreen({ navigation }) {
 
             <ScrollView style={tw`flex`}>
                 {tasks.map((task) => (
-                    <TaskPreviewCard key={task.id} task={task} navigation={navigation} />
+                    <TaskPreviewCard key={task.taskId} task={task} navigation={navigation} />
                 ))}
             </ScrollView>
         </Fragment>
