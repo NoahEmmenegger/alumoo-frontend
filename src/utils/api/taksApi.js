@@ -97,3 +97,7 @@ export async function getProjectById(id) {
         }, 1000);
     });
 }
+
+export async function getUserById(id) {
+    return (await axios.get(`${baseUri}Project/getProjectsByOwnerId?ownerId=${id}`)).data;
+}

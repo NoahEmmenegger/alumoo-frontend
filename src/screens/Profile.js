@@ -1,32 +1,32 @@
 import React, { useEffect } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { getMyprojects } from '../utils/api/taksApi';
+import { getUserById } from '../utils/api/taksApi';
 import tw from '../utils/tailwind';
 
 export default function Profile({ navigation }) {
-    const [user, setUser] = React.useState({
-        userId: 1,
-        firstName: 'Kenny',
-        lastName: 'Betschart',
-        email: 'kennybetschart03@gmail.com',
-    });
-    const [projects, setProjects] = React.useState([]);
-
-    async function updateProjects() {
-        setProjects(await getMyprojects());
-    }
+    const [user, setUser] = React.useState(null);
 
     useEffect(() => {
-        updateProjects();
-    }, []);
+        async function init() {
+            setUser(await getUserById(301));
+        }
+
+        init();
+    });
+
+    if (!user) {
+        return (
+            <SafeAreaView>
+                <Text>Loading...</Text>
+            </SafeAreaView>
+        );
+    }
 
     return (
         <SafeAreaView>
             <View style={tw`mt-16 self-center`}>
-                <Text style={tw`text-center font-bold text-xl`}>
-                    {user.firstName} {user.lastName}
-                </Text>
+                <Text style={tw`text-center font-bold text-xl`}>{user.ownerName}</Text>
                 <Text style={tw`text-center`}>{user.email}</Text>
             </View>
 
@@ -48,7 +48,7 @@ export default function Profile({ navigation }) {
             </View>
 
             <View style={tw`mt-16 self-center`}>
-                {projects.map((project) => {
+                {user.projects.map((project) => {
                     return (
                         <TouchableOpacity
                             key={project.projectId}

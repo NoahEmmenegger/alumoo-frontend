@@ -52,8 +52,6 @@ export default function TaskDetail({ navigation, route }) {
     const sliderMin = 0;
     const sliderColor = '#FFD125';
 
-    console.log(task);
-
     return (
         <SafeAreaView style={tw`p-5`}>
             <View style={tw`flex flex-row`}>
