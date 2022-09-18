@@ -5,7 +5,6 @@ import tw from '../utils/tailwind';
 import Star from './common/Star';
 
 export default function TaskPreviewCard({ navigation, task, onRemove }) {
-    console.log(task);
     return (
         <TouchableOpacity
             style={tw`bg-white m-5 p-5 rounded-lg shadow-md`}

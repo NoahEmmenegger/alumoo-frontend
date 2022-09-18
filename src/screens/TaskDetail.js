@@ -15,7 +15,7 @@ export default function TaskDetail({ navigation, route }) {
         );
     }
 
-    const userId = 293;
+    const userId = 378;
 
     const [task, setTask] = useState(null);
 
@@ -34,6 +34,8 @@ export default function TaskDetail({ navigation, route }) {
             </SafeAreaView>
         );
     }
+
+    console.log(task);
 
     const sliders = [
         'A Computer needs to be fixed',
