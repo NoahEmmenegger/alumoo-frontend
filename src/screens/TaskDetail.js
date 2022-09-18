@@ -14,7 +14,7 @@ export default function TaskDetail({ navigation, route }) {
         );
     }
 
-    const userId = 2;
+    const userId = 293;
 
     const [task, setTask] = useState(null);
 
@@ -34,6 +34,8 @@ export default function TaskDetail({ navigation, route }) {
         );
     }
 
+    console.log(task);
+
     return (
         <SafeAreaView style={tw`p-5`}>
             <View style={tw`flex flex-row`}>
@@ -43,18 +45,18 @@ export default function TaskDetail({ navigation, route }) {
                 </View>
             </View>
             <View style={tw`flex flex-row mb-10`}>
-                <Text style={tw`text-secondary`}>{task.projectName} - </Text>
-                <Text style={tw`text-secondary`}>{task.owner}</Text>
+                <Text style={tw`text-secondary`}>{task.projectTitle} - </Text>
+                <Text style={tw`text-secondary`}>{task.ownerName}</Text>
             </View>
             <ScrollView style={tw`h-full`}>
                 <Text>{task.description}</Text>
                 <Text style={tw`mt-5`}>Matching Skills:</Text>
-                {task.skills.map((skill) => (
+                {task.skills.split(',').map((skill) => (
                     <Text key={skill}>- {skill}</Text>
                 ))}
             </ScrollView>
 
-            {userId === 2 ? (
+            {userId === task.ownerId ? (
                 <View style={tw`flex flex-row justify-center mt-auto`}>
                     <TouchableHighlight
                         onPress={() => navigation.navigate('Application', { id: route.params.id })}

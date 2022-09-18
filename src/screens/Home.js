@@ -60,7 +60,14 @@ export default function HomeScreen({ navigation }) {
             ) : (
                 <ScrollView style={tw`flex`}>
                     {tasks.map((task) => (
-                        <TaskPreviewCard key={task.taskId} task={task} navigation={navigation} />
+                        <TaskPreviewCard
+                            key={task.taskId}
+                            task={task}
+                            navigation={navigation}
+                            onRemove={() => {
+                                setTasks(tasks.filter((t) => t.taskId !== task.taskId));
+                            }}
+                        />
                     ))}
                 </ScrollView>
             )}

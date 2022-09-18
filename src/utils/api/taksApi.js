@@ -7,7 +7,10 @@ export async function getSuggestions() {
 }
 
 export async function toggleStarTask(taskId, volunteerId) {
-    return (await axios.post(`${baseUri}Task/toggleStarTask`, { taskId, volunteerId })).data;
+    return await axios.post(`${baseUri}Task/toggleStarTask?volunteerId=${volunteerId}&taskId=${taskId}`, {
+        volunteerId,
+        taskId,
+    });
 }
 
 export async function getMyTasks() {
@@ -34,22 +37,8 @@ export function getMyprojects() {
         }, 1000);
     });
 }
-export function getTask(id) {
-    return new Promise((res, rej) => {
-        setTimeout(() => {
-            res({
-                id: 1,
-                title: 'Old woman wants to cross the road!',
-                description:
-                    'I am an old lady who needs someone to help me cross the roads. Why did the old lady need to cross the road? To get to the other side of course.',
-                isRemote: true,
-                projectName: 'Grandma Project',
-                owner: 'John Doe',
-                location: '',
-                skills: ['JavaScript', 'React', 'Node.js'],
-            });
-        }, 1000);
-    });
+export async function getTask(taskId) {
+    return (await axios.get(`${baseUri}Task/getDetailedTaskById?taskId=${taskId}`)).data;
 }
 
 export async function createProjectCall(project) {
