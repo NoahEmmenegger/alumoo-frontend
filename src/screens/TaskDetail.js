@@ -1,3 +1,4 @@
+import { Slider } from '@miblanchard/react-native-slider';
 import React, { useState } from 'react';
 import { ScrollView, Text, TouchableHighlight, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -34,6 +35,23 @@ export default function TaskDetail({ navigation, route }) {
         );
     }
 
+    const sliders = [
+        'A Computer needs to be fixed',
+        'A Sociable person is needed',
+        'A creative person is needed',
+        'There needs to be good planning',
+        "There's going to be physical labor",
+        'Someone with good writing skills is needed',
+        'Someone needs to drive',
+        'An entertaining person is needed',
+        'Someone needs to be good with children',
+        'Finance is involved',
+    ];
+
+    const sliderMax = 1;
+    const sliderMin = 0;
+    const sliderColor = '#FFD125';
+
     console.log(task);
 
     return (
@@ -49,11 +67,24 @@ export default function TaskDetail({ navigation, route }) {
                 <Text style={tw`text-secondary`}>{task.ownerName}</Text>
             </View>
             <ScrollView style={tw`h-full`}>
-                <Text>{task.description}</Text>
-                <Text style={tw`mt-5`}>Matching Skills:</Text>
-                {task.skills.split(',').map((skill) => (
-                    <Text key={skill}>- {skill}</Text>
-                ))}
+                <Text style={tw``}>{task.description}</Text>
+                <View style={tw``}>
+                    <Text style={tw`mt-5 text-xl pb-10 font-bold`}>Matching Skills:</Text>
+                    {task.skills.split(',').map((skill, index) => (
+                        <View key={index} style={[tw``]}>
+                            <Text style={[tw`text-center mb-1 text-sm`]}>{sliders[index]}</Text>
+                            <Slider
+                                value={skill}
+                                onValueChange={(value) => {}}
+                                maximumValue={sliderMax}
+                                minimumValue={sliderMin}
+                                minimumTrackTintColor={sliderColor}
+                                thumbTintColor={sliderColor}
+                                disabled={true}
+                            />
+                        </View>
+                    ))}
+                </View>
             </ScrollView>
 
             {userId === task.ownerId ? (
