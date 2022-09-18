@@ -14,7 +14,7 @@ export default function ProjectOverview({ route, navigation }) {
         async function init() {
             let newTask = (await getProjectById(project.projectId)).tasks;
             newTask.forEach((task) => {
-                task.taskId = task.id;
+                task.taskId = task.taskId | task.id;
             });
             setTasks(newTask);
         }
