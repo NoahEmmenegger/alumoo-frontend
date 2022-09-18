@@ -35,8 +35,6 @@ export default function TaskDetail({ navigation, route }) {
         );
     }
 
-    console.log(task);
-
     const sliders = [
         'A Computer needs to be fixed',
         'A Sociable person is needed',

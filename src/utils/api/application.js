@@ -18,6 +18,9 @@ export async function addApplication(volunteerId, taskId) {
 }
 
 export async function getApplicationsFromTaskId(taskId) {
+    // const res = await axios.get(`${baseUri}Task/getApplicantsByTaskId?taskId=${taskId}`);
+    // return res.data;
+
     return new Promise((res, rej) => {
         setTimeout(() => {
             res([
