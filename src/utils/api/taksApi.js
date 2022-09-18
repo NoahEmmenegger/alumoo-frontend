@@ -79,23 +79,7 @@ export async function setupSkillsCall(skillsUpdate) {
 }
 
 export async function getProjectById(id) {
-    //axios.get(baseUri + '');
-    return new Promise((res, rej) => {
-        setTimeout(() => {
-            res({
-                id: 1,
-                title: 'My task',
-                description: 'lorem ipsum',
-                tasks: [
-                    {
-                        id: 2,
-                        title: 'Task',
-                        description: 'lorem lorem',
-                    },
-                ],
-            });
-        }, 1000);
-    });
+    return (await axios.get(`${baseUri}Project/getProjectById?projectId=${id}`)).data;
 }
 
 export async function getUserById(id) {

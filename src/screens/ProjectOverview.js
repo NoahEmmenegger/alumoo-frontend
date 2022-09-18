@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TaskPreviewCard from '../components/TaskPreviewCard';
 import { getProjectById } from '../utils/api/taksApi';
@@ -12,7 +12,11 @@ export default function ProjectOverview({ route, navigation }) {
 
     useEffect(() => {
         async function init() {
-            setTasks((await getProjectById(project.projectId)).tasks);
+            let newTask = (await getProjectById(project.projectId)).tasks;
+            newTask.forEach((task) => {
+                task.taskId = task.id;
+            });
+            setTasks(newTask);
         }
         init();
     }, []);
@@ -24,11 +28,11 @@ export default function ProjectOverview({ route, navigation }) {
                 <Text style={[tw`mt-6 backdrop:text-center`]}>{project.description}</Text>
             </View>
 
-            <View>
-                {tasks.map((task) => {
-                    return <TaskPreviewCard key={task.id} task={task} navigation={navigation} />;
+            <ScrollView>
+                {tasks.map((task, index) => {
+                    return <TaskPreviewCard key={index} task={task} navigation={navigation} />;
                 })}
-            </View>
+            </ScrollView>
         </SafeAreaView>
     );
 }

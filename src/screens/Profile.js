@@ -9,7 +9,7 @@ export default function Profile({ navigation }) {
 
     useEffect(() => {
         async function init() {
-            setUser(await getUserById(301));
+            setUser(await getUserById(378));
         }
 
         init();
